@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>en player</title>
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+  <div class="player" id="player">
+    <div class="player-selector">
+      <input class="player-selector__input assistive-text" id="input-file" type="file" accept="video/*, audio/*">
+      <label class="player-selector__body" for="input-file">
+        <span class="player-selector__button">load...</span>
+        <span class="player-selector__text">en player</span>
+      </label>
+    </div>
+    <button class="player-close" id="button-close">✖</button>
+    <video class="player-video" id="video" controls autoplay></video>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
