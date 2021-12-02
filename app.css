@@ -102,6 +102,10 @@ ul {
   display: initial;
 }
 
+.player.playing .player-progress {
+  display: initial;
+}
+
 .player-selector {
   z-index: 100;
 }
@@ -157,6 +161,17 @@ ul {
   display: block;
   margin-top: 0.75rem;
   color: red;
+}
+
+.player-progress {
+  position: absolute;
+  left: -18rem;
+  top: 1rem;
+  width: 20rem;
+  height: 1rem;
+  transform: rotate(90deg);
+  transform-origin: 10rem 10rem;
+  display: none;
 }
 
 .assistive-text {

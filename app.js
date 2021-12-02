@@ -4,6 +4,7 @@ let player = document.getElementById("player");
 let video = document.getElementById("video");
 let fileInput = document.getElementById("input-file");
 let closeButton = document.getElementById("button-close");
+let progress = document.getElementById("input-progress");
 let loaded = false;
 let paused = false;
 
@@ -22,6 +23,7 @@ function loadVideo(src) {
     video.src = src;
     video.focus();
     player.classList.add("playing");
+    progress.value = "0";
     loaded = true;
 }
 
@@ -48,6 +50,14 @@ closeButton.addEventListener("click", () => {
 });
 
 document.addEventListener("click", (event) => {
+    if (!event.target) {
+        return;
+    }
+
+    if (progress.contains(event.target)) {
+        return;
+    }
+
     if (loaded) {
         let y = event.clientY;
         let h = document.documentElement.clientHeight;
@@ -72,4 +82,11 @@ document.addEventListener("click", (event) => {
             video.currentTime = seek;
         }
     }
+});
+
+progress.addEventListener("input", (event) => {
+    let value = event.target.value;
+    let duration = video.duration;
+    let seek = duration * value / 100;
+    video.currentTime = seek;
 });
