@@ -5,6 +5,11 @@ let video = document.getElementById("video");
 let fileInput = document.getElementById("input-file");
 let closeButton = document.getElementById("button-close");
 
+function displayError(msg) {
+    let div = document.getElementById("player-error");
+    div.innerText = msg;
+}
+
 function getFile(event) {
     let files = event.target.files;
     let file = files[0];
@@ -21,10 +26,16 @@ function unloadVideo(video) {
 }
 
 fileInput.addEventListener("change", (event) => {
-    let file = getFile(event);
-    let fileUrl = URL.createObjectURL(file);
-    loadVideo(video, fileUrl);
-    player.classList.add("playing");
+    try {
+        let file = getFile(event);
+        let fileUrl = URL.createObjectURL(file);
+        loadVideo(video, fileUrl);
+        player.classList.add("playing");
+    }
+    catch (ex) {
+        let msg = ex.message;
+        displayError(msg);
+    }
 });
 
 closeButton.addEventListener("click", () => {
