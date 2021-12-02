@@ -16,29 +16,29 @@ function getFile(event) {
     return file;
 }
 
-function loadVideo(video, src) {
+function loadVideo(src) {
     video.src = src;
     video.focus();
+    player.classList.add("playing");
 }
 
-function unloadVideo(video) {
+function unloadVideo() {
     video.src = "";
+    player.classList.remove("playing");
 }
 
-fileInput.addEventListener("change", (event) => {
+fileInput.addEventListener("change", async (event) => {
     try {
         let file = getFile(event);
         let fileUrl = URL.createObjectURL(file);
-        loadVideo(video, fileUrl);
-        player.classList.add("playing");
+        loadVideo(fileUrl);
     }
     catch (ex) {
-        let msg = ex.message;
-        displayError(msg);
+        unloadVideo();
+        displayError(ex.message)
     }
 });
 
 closeButton.addEventListener("click", () => {
-    unloadVideo(video);
-    player.classList.remove("playing");
+    unloadVideo();
 });

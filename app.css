@@ -153,6 +153,12 @@ ul {
   display: none;
 }
 
+.player-error {
+  display: block;
+  margin-top: 0.75rem;
+  color: red;
+}
+
 .assistive-text {
   position: absolute !important;
   margin: -1px !important;
